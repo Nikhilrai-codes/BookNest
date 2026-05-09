@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>Signup</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="auth-container">
+
+    <form class="auth-form"
+    onsubmit="signup(event)">
+
+        <h2>Create Account 🚀</h2>
+
+        <input type="text"
+        id="name"
+        placeholder="Enter Name"
+        required>
+
+        <input type="email"
+        id="email"
+        placeholder="Enter Email"
+        required>
+
+        <input type="password"
+        id="password"
+        placeholder="Create Password"
+        required>
+
+        <button type="submit">
+            Signup
+        </button>
+
+        <p>
+            Already have an account?
+            <a href="login.html">Login</a>
+        </p>
+
+    </form>
+
+</div>
+
+<script>
+
+function signup(event){
+
+    event.preventDefault();
+
+    const name =
+    document.getElementById("name").value;
+
+    const email =
+    document.getElementById("email").value;
+
+    const password =
+    document.getElementById("password").value;
+
+    const user = {
+
+        name:name,
+        email:email,
+        password:password
+    };
+
+    localStorage.setItem(
+        "user",
+        JSON.stringify(user)
+    );
+
+    alert("Account Created Successfully ✅");
+
+    window.location.href = "login.html";
+}
+
+</script>
+
+</body>
+
+</html>

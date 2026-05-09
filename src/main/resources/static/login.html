@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>Login</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="auth-container">
+
+    <form class="auth-form"
+    onsubmit="login(event)">
+
+        <h2>Welcome Back 👋</h2>
+
+        <input type="email"
+        id="email"
+        placeholder="Enter Email"
+        required>
+
+        <input type="password"
+        id="password"
+        placeholder="Enter Password"
+        required>
+
+        <button type="submit">
+            Login
+        </button>
+
+        <p>
+            Don't have an account?
+            <a href="signup.html">
+                Signup
+            </a>
+        </p>
+
+    </form>
+
+</div>
+
+<script>
+
+function login(event){
+
+    event.preventDefault();
+
+    const email =
+    document.getElementById("email").value;
+
+    const password =
+    document.getElementById("password").value;
+
+    const storedUser =
+    JSON.parse(localStorage.getItem("user"));
+
+    if(!storedUser){
+
+        alert("No account found. Please signup first.");
+
+        return;
+    }
+
+    if(
+        email === storedUser.email &&
+        password === storedUser.password
+    ){
+
+        localStorage.setItem("loggedIn","true");
+
+        alert("Login Successful ✅");
+
+        window.location.href = "index.html";
+    }
+
+    else{
+
+        alert("Invalid Email or Password ❌");
+    }
+}
+
+</script>
+
+</body>
+
+</html>
