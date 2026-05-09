@@ -1,9 +1,9 @@
-if(localStorage.getItem("loggedIn") !== "true"){
+if (localStorage.getItem("loggedIn") !== "true") {
 
-    if(
+    if (
         !window.location.pathname.includes("login.html") &&
         !window.location.pathname.includes("signup.html")
-    ){
+    ) {
 
         window.location.href = "login.html";
     }
@@ -13,64 +13,64 @@ if(localStorage.getItem("loggedIn") !== "true"){
 const books = [
 
     {
-        id:1,
+        id: 1,
 
-        title:"Java Programming",
+        title: "Java Programming",
 
-        price:599,
+        price: 599,
 
-        image:"https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=600&q=80"
+        image: "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=600&q=80"
     },
 
     {
-        id:2,
+        id: 2,
 
-        title:"Spring Boot Guide",
+        title: "Spring Boot Guide",
 
-        price:799,
+        price: 799,
 
-        image:"https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80"
+        image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80"
     },
 
     {
-        id:3,
+        id: 3,
 
-        title:"JavaScript Mastery",
+        title: "JavaScript Mastery",
 
-        price:699,
+        price: 699,
 
-        image:"https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80"
+        image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80"
     },
 
     {
-        id:4,
+        id: 4,
 
-        title:"React Development",
+        title: "React Development",
 
-        price:899,
+        price: 899,
 
-        image:"https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=600&q=80"
+        image: "https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=600&q=80"
     }
 ];
 
 let cart =
-JSON.parse(localStorage.getItem("cart")) || [];
+    JSON.parse(localStorage.getItem("cart")) || [];
 
 const booksContainer =
-document.getElementById("booksContainer");
+    document.getElementById("booksContainer");
 
 const cartItems =
-document.getElementById("cartItems");
+    document.getElementById("cartItems");
 
 const totalPrice =
-document.getElementById("totalPrice");
+    document.getElementById("totalPrice");
 
 const searchInput =
-document.getElementById("searchInput");
+    document.getElementById("searchInput");
 
-function displayBooks(bookList){
+function displayBooks(bookList) {
 
-    if(!booksContainer) return;
+    if (!booksContainer) return;
 
     booksContainer.innerHTML = "";
 
@@ -108,10 +108,10 @@ function displayBooks(bookList){
 
 displayBooks(books);
 
-function addToCart(id){
+function addToCart(id) {
 
     const selectedBook =
-    books.find(book => book.id === id);
+        books.find(book => book.id === id);
 
     cart.push(selectedBook);
 
@@ -125,15 +125,15 @@ function addToCart(id){
     alert("Book Added To Cart 🛒");
 }
 
-function updateCart(){
+function updateCart() {
 
-    if(!cartItems) return;
+    if (!cartItems) return;
 
     cartItems.innerHTML = "";
 
     let total = 0;
 
-    if(cart.length === 0){
+    if (cart.length === 0) {
 
         cartItems.innerHTML = `
 
@@ -149,7 +149,7 @@ function updateCart(){
         return;
     }
 
-    cart.forEach((item,index)=>{
+    cart.forEach((item, index) => {
 
         total += item.price;
 
@@ -186,9 +186,9 @@ function updateCart(){
     totalPrice.innerText = total;
 }
 
-function removeFromCart(index){
+function removeFromCart(index) {
 
-    cart.splice(index,1);
+    cart.splice(index, 1);
 
     localStorage.setItem(
         "cart",
@@ -198,12 +198,12 @@ function removeFromCart(index){
     updateCart();
 }
 
-function goToCheckout(){
+function goToCheckout() {
 
     const cart =
-    JSON.parse(localStorage.getItem("cart")) || [];
+        JSON.parse(localStorage.getItem("cart")) || [];
 
-    if(cart.length === 0){
+    if (cart.length === 0) {
 
         alert("Your cart is empty 🛒");
 
@@ -213,16 +213,16 @@ function goToCheckout(){
     window.location.href = "checkout.html";
 }
 
-function logout(){
+function logout() {
 
     localStorage.removeItem("loggedIn");
 
     window.location.href = "login.html";
 }
 
-if(searchInput){
+if (searchInput) {
 
-    searchInput.addEventListener("keyup",()=>{
+    searchInput.addEventListener("keyup", () => {
 
         const filteredBooks = books.filter(book =>
 

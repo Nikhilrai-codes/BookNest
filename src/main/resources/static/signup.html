@@ -5,8 +5,7 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-    content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Signup</title>
 
@@ -16,74 +15,64 @@
 
 <body>
 
-<div class="auth-container">
+    <div class="auth-container">
 
-    <form class="auth-form"
-    onsubmit="signup(event)">
+        <form class="auth-form" onsubmit="signup(event)">
 
-        <h2>Create Account 🚀</h2>
+            <h2>Create Account</h2>
 
-        <input type="text"
-        id="name"
-        placeholder="Enter Name"
-        required>
+            <input type="text" id="name" placeholder="Enter Name" required>
 
-        <input type="email"
-        id="email"
-        placeholder="Enter Email"
-        required>
+            <input type="email" id="email" placeholder="Enter Email" required>
 
-        <input type="password"
-        id="password"
-        placeholder="Create Password"
-        required>
+            <input type="password" id="password" placeholder="Create Password" required>
 
-        <button type="submit">
-            Signup
-        </button>
+            <button type="submit">
+                Signup
+            </button>
 
-        <p>
-            Already have an account?
-            <a href="login.html">Login</a>
-        </p>
+            <p>
+                Already have an account?
+                <a href="login.html">Login</a>
+            </p>
 
-    </form>
+        </form>
 
-</div>
+    </div>
 
-<script>
+    <script>
 
-function signup(event){
+        function signup(event) {
 
-    event.preventDefault();
+            event.preventDefault();
 
-    const name =
-    document.getElementById("name").value;
+            const name =
+                document.getElementById("name").value;
 
-    const email =
-    document.getElementById("email").value;
+            const email =
+                document.getElementById("email").value;
 
-    const password =
-    document.getElementById("password").value;
+            const password =
+                document.getElementById("password").value;
 
-    const user = {
+            const user = {
 
-        name:name,
-        email:email,
-        password:password
-    };
+                name: name,
+                email: email,
+                password: password
+            };
 
-    localStorage.setItem(
-        "user",
-        JSON.stringify(user)
-    );
+            localStorage.setItem(
+                "user",
+                JSON.stringify(user)
+            );
 
-    alert("Account Created Successfully ✅");
+            alert("Account Created Successfully ");
 
-    window.location.href = "login.html";
-}
+            window.location.href = "login.html";
+        }
 
-</script>
+    </script>
 
 </body>
 
